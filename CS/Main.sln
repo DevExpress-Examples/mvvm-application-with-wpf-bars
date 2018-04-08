@@ -1,0 +1,81 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Step 1", "Step 1", "{6978BC01-616F-485C-A9CB-CC33C7B31374}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Step 2", "Step 2", "{52F626B9-D072-473C-86BC-52AEEC9C3C13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Step 3", "Step 3", "{3B13FC72-6704-4336-A2EB-EBA8587E686E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Step 4", "Step 4", "{F99BB2EB-C927-4AA6-92A4-8B0E41D17BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DX_MVVM", "Step 1 - creating model\DX_MVVM.csproj", "{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DX_MVVM", "Step 2 - creating view 1 (PersonViewModel and PersonView)\DX_MVVM.csproj", "{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DX_MVVM", "Step 3 - creating view 2 (PersonsViewModel and PersonsView)\DX_MVVM.csproj", "{B92DE6CA-BF67-4093-B145-407BD19B0E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DX_MVVM", "Step 4 - building views\DX_MVVM.csproj", "{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Debug|x86.ActiveCfg = Debug|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Debug|x86.Build.0 = Debug|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Release|Any CPU.ActiveCfg = Release|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Release|Mixed Platforms.Build.0 = Release|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Release|x86.ActiveCfg = Release|x86
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC}.Release|x86.Build.0 = Release|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Debug|x86.ActiveCfg = Debug|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Debug|x86.Build.0 = Debug|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Release|Any CPU.ActiveCfg = Release|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Release|x86.ActiveCfg = Release|x86
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF}.Release|x86.Build.0 = Release|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Debug|x86.ActiveCfg = Debug|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Debug|x86.Build.0 = Debug|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Release|Any CPU.ActiveCfg = Release|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Release|x86.ActiveCfg = Release|x86
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E}.Release|x86.Build.0 = Release|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Debug|x86.ActiveCfg = Debug|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Debug|x86.Build.0 = Debug|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Release|Any CPU.ActiveCfg = Release|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Release|Mixed Platforms.Build.0 = Release|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Release|x86.ActiveCfg = Release|x86
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9699CE91-ABC4-4BCB-AB80-BC180FA603CC} = {6978BC01-616F-485C-A9CB-CC33C7B31374}
+		{F485BDF9-A00C-4184-8A9D-3EFB4CCD3ADF} = {52F626B9-D072-473C-86BC-52AEEC9C3C13}
+		{B92DE6CA-BF67-4093-B145-407BD19B0E0E} = {3B13FC72-6704-4336-A2EB-EBA8587E686E}
+		{77A05CE3-0519-4F9F-82B1-8F8A05F9B838} = {F99BB2EB-C927-4AA6-92A4-8B0E41D17BBB}
+	EndGlobalSection
+EndGlobal

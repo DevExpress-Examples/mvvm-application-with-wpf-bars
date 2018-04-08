@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="DX_MVVM.Views.PersonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dDx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:hlp="clr-namespace:DX_MVVM.Helpers"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d dDx" d:DesignHeight="300" d:DesignWidth="300" dDx:ThemeManager.ThemeName="Office2007Silver"
+             d:DataContext="{x:Static hlp:PersonViewModelCreator.DesignPersonViewModel}">
+    <dxb:BarManager Name="manager" MDIMergeStyle="Never">
+        <dxb:BarManager.Items>
+            <dxb:BarCheckItem Name="cbIsReadOnly" Content="Locked" IsChecked="{Binding IsReadOnly}"/>
+        </dxb:BarManager.Items>
+        <dxb:BarManager.Bars>
+            <dxb:Bar x:Name="PART_childBar1">
+                <dxb:Bar.ItemLinks>
+                    <dxb:BarCheckItemLink BarItemName="cbIsReadOnly"/>
+                </dxb:Bar.ItemLinks>
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+        <dxlc:LayoutControl>
+            <dxlc:LayoutGroup Orientation="Vertical">
+                <dxe:ImageEdit Source="{Binding Photo}" IsReadOnly="True"/>
+                <dxlc:LayoutItem Label="Fisrt Name:">
+                    <dxe:TextEdit Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Last Name:">
+                    <dxe:TextEdit Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Email:">
+                    <dxe:TextEdit Text="{Binding Email, UpdateSourceTrigger=LostFocus}" IsReadOnly="{Binding IsReadOnly}"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+    </dxb:BarManager>
+</UserControl>

@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="DX_MVVM.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dDx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:hlp="clr-namespace:DX_MVVM.Helpers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vw="clr-namespace:DX_MVVM.Views"
+    mc:Ignorable="d dDx" d:DesignHeight="300" d:DesignWidth="400" dDx:ThemeManager.ThemeName="Office2007Silver"
+    d:DataContext="{x:Static hlp:PersonsViewModelCreator.PersonsViewModel}">
+
+    <dxb:BarManager Name="manager">
+        <dxb:BarManager.Bars>
+            <dxb:Bar x:Name="mainBar" Caption="Bar"/>
+        </dxb:BarManager.Bars>
+        <dx:DXTabControl SelectedIndex="0">
+            <dx:DXTabControl.View>
+                <dx:TabControlMultiLineView HeaderLocation="Bottom"/>
+            </dx:DXTabControl.View>
+            <dx:DXTabItem Content="{Binding}" Header="Persons">
+                <dx:DXTabItem.ContentTemplate>
+                    <DataTemplate>
+                        <vw:PersonsView Loaded="PersonsView_Loaded"/>
+                    </DataTemplate>
+                </dx:DXTabItem.ContentTemplate>
+            </dx:DXTabItem>
+            <dx:DXTabItem Content="{Binding Selected}" Header="{Binding Selected}">
+                <dx:DXTabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Details:"/>
+                            <TextBlock Text="{Binding FirstName}" Margin="5,0,0,0"/>
+                            <TextBlock Text="{Binding LastName}" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </dx:DXTabItem.HeaderTemplate>
+                <dx:DXTabItem.ContentTemplate>
+                    <DataTemplate>
+                        <vw:PersonView Loaded="PersonView_Loaded"/>
+                    </DataTemplate>
+                </dx:DXTabItem.ContentTemplate>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+    </dxb:BarManager>
+</UserControl>
