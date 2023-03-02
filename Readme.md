@@ -3,7 +3,8 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/E3341)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# MVVM application with WPF Bars
+
+# MVVM Application with WPF Bars
 
 This example demonstrates how to use [WPF Bars](https://docs.devexpress.com/WPF/6194/controls-and-libraries/ribbon-bars-and-menu/bars) in an MVVM application. Bars are bound to commands that allow you to add and remove items from the data source and edit item properties:
 
@@ -99,9 +100,9 @@ The **Priority** button is the [BarSubItem](https://docs.devexpress.com/WPF/DevE
 </dxb:BarSubItem>
 ```
 
-### Tags Button
+### Tags Selector
 
-The **Tags** button is the [BarEditItem](https://docs.devexpress.com/WPF/DevExpress.Xpf.Bars.BarEditItem) with the embedded [Checked Token Combo Box](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.CheckedTokenComboBoxStyleSettings). This button allows you to assign multiple tags to the selected item:
+The **Tags** selector is the [BarEditItem](https://docs.devexpress.com/WPF/DevExpress.Xpf.Bars.BarEditItem) object with the embedded [Checked Token Combo Box](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.CheckedTokenComboBoxStyleSettings). This element allows you to assign multiple tags to the selected item:
 
 ![image](https://user-images.githubusercontent.com/65009440/222433054-d4d4e32b-7165-4bb8-944d-2d80a80a24bd.png)
 
