@@ -100,6 +100,8 @@ The **Priority** button is the [BarSubItem](https://docs.devexpress.com/WPF/DevE
 </dxb:BarSubItem>
 ```
 
+Refer to the following help topics for more information: [DXBinding](https://docs.devexpress.com/WPF/115771/mvvm-framework/dxbinding/dxbinding), [DXCommand](https://docs.devexpress.com/WPF/115776/mvvm-framework/dxbinding/dxcommand), and [Language Specification](https://docs.devexpress.com/WPF/115777/mvvm-framework/dxbinding/language-specification).
+
 ### Tags Selector
 
 The **Tags** selector is the [BarEditItem](https://docs.devexpress.com/WPF/DevExpress.Xpf.Bars.BarEditItem) object with the embedded [Checked Token Combo Box](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.CheckedTokenComboBoxStyleSettings). This element allows you to assign multiple tags to the selected item:

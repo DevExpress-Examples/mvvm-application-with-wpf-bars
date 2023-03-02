@@ -47,7 +47,7 @@
                               BarItemDisplayMode="ContentAndGlyph"/>
             <dxb:BarItemSeparator/>
             <dxb:BarSubItem x:Name="priority" Content="Priority" 
-                            IsEnabled="{DXBinding 'SelectedIssue != null'}" >
+                            IsEnabled="{DXBinding 'SelectedIssue != null'}">
                 <dxb:BarCheckItem Content="Low" GroupIndex="0" Background="Green" Foreground="White"
                                   Command="{DXCommand Execute='SelectedIssue.Priority = $local:Priority.Low'}"
                                   IsChecked="{DXBinding 'SelectedIssue.Priority == $local:Priority.Low', Mode=OneWay}"/>

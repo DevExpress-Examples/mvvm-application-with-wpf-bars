@@ -1,7 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace Bars_in_MVVM_Application {
     public enum Priority {
@@ -17,7 +16,6 @@ namespace Bars_in_MVVM_Application {
         Postponed
     }
     public class Issue : BindableBase {
-        [ReadOnly(true)]
         public int Id { get { return GetValue<int>(); } set { SetValue(value); } }
         public string Subject { get { return GetValue<string>(); } set { SetValue(value); } }
         public Priority Priority { get { return GetValue<Priority>(); } set { SetValue(value); } }
