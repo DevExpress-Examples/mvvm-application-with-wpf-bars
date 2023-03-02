@@ -1,0 +1,108 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Bars_in_MVVM_Application"
+    x:Class="Bars_in_MVVM_Application.MainWindow"
+    mc:Ignorable="d"
+    Title="MainWindow" Height="300" Width="600">
+    <Window.Resources>
+        <dxmvvm:ObjectToObjectConverter x:Key="PriorityToColorConverter">
+            <dxmvvm:MapItem Source="Low" Target="Green"/>
+            <dxmvvm:MapItem Source="Normal" Target="Orange"/>
+            <dxmvvm:MapItem Source="High" Target="Red"/>
+        </dxmvvm:ObjectToObjectConverter>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <dxb:ToolBarControl AllowQuickCustomization="False">
+            <dxb:BarButtonItem x:Name="addItem" 
+                               Content="Add" 
+                               Command="{Binding AddIssueCommand}" 
+                               Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_AddCircled.svg'}" 
+                               BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarButtonItem x:Name="removeItem" 
+                               Content="Remove" 
+                               Command="{Binding RemoveIssueCommand}" 
+                               Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_RemoveCircled.svg'}" 
+                               BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarItemSeparator/>
+            <dxb:BarCheckItem x:Name="completed" Content="Completed" 
+                              IsChecked="{Binding SelectedIssue.Completed}"
+                              IsEnabled="{DXBinding 'SelectedIssue != null'}"
+                              Glyph="{dx:DXImage 'SvgImages/Outlook Inspired/MarkComplete.svg'}"
+                              BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarItemSeparator/>
+            <dxb:BarSubItem x:Name="priority" Content="Priority" 
+                            IsEnabled="{DXBinding 'SelectedIssue != null'}" >
+                <dxb:BarCheckItem Content="Low" GroupIndex="0" Background="Green" Foreground="White"
+                                  Command="{DXCommand Execute='SelectedIssue.Priority = $local:Priority.Low'}"
+                                  IsChecked="{DXBinding 'SelectedIssue.Priority == $local:Priority.Low', Mode=OneWay}"/>
+                <dxb:BarCheckItem Content="Normal" GroupIndex="0" Background="Orange" Foreground="White"
+                                  Command="{DXCommand Execute='SelectedIssue.Priority = $local:Priority.Normal'}"
+                                  IsChecked="{DXBinding 'SelectedIssue.Priority == $local:Priority.Normal', Mode=OneWay}"/>
+                <dxb:BarCheckItem Content="High" GroupIndex="0"  Background="Red" Foreground="White"
+                                  Command="{DXCommand Execute='SelectedIssue.Priority = $local:Priority.High'}"
+                                  IsChecked="{DXBinding 'SelectedIssue.Priority == $local:Priority.High', Mode=OneWay}"/>
+            </dxb:BarSubItem>
+            <dxb:BarItemSeparator/>
+            <dxb:BarEditItem x:Name="tags" Content="Tags: " EditValue="{Binding SelectedIssue.Tags}" IsVisible="{DXBinding 'SelectedIssue != null'}">
+                <dxb:BarEditItem.EditSettings>
+                    <dxe:ComboBoxEditSettings ItemsSource="{dxe:EnumItemsSource EnumType={x:Type local:Tag}}">
+                        <dxe:ComboBoxEditSettings.StyleSettings>
+                            <dxe:CheckedTokenComboBoxStyleSettings AllowEditTokens="False" FilterOutSelectedTokens="False" NewTokenPosition="None"/>
+                        </dxe:ComboBoxEditSettings.StyleSettings>
+                    </dxe:ComboBoxEditSettings>
+                </dxb:BarEditItem.EditSettings>
+            </dxb:BarEditItem>
+        </dxb:ToolBarControl>
+        
+        <dxe:ListBoxEdit Name="list" Grid.Row="1" ItemsSource="{Binding Issues}" 
+                         DisplayMember="Subject" ValueMember="Id"
+                         SelectedItem="{Binding SelectedIssue}">
+            <dxe:ListBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <dxe:ComboBoxEdit ShowBorder="False" IsReadOnly="True" IsTextEditable="False" Margin="2,0"
+                                          AllowDefaultButton="False" EditValue="{Binding Tags}"
+                                          PopupOpening="{DXEvent Handler='@args.Cancel = true;'}"
+                                          ItemsSource="{dxe:EnumItemsSource EnumType={x:Type local:Tag}}">
+                            <dxe:ComboBoxEdit.StyleSettings>
+                                <dxe:CheckedTokenComboBoxStyleSettings AllowEditTokens="False"/>
+                            </dxe:ComboBoxEdit.StyleSettings>
+                        </dxe:ComboBoxEdit>
+                        <TextBlock Text="{Binding Subject}"
+                                   FontWeight="{DXBinding 'Completed ? $FontWeights.Normal : $FontWeights.Bold'}"
+                                   Foreground="{Binding Priority, Converter={StaticResource PriorityToColorConverter}}"/>
+
+                        <dxb:BarManager.DXContextMenu>
+                            <dxb:PopupMenu>
+                                <dxb:BarButtonItemLink BarItemName="addItem"/>
+                                <dxb:BarButtonItemLink BarItemName="removeItem"/>
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarCheckItemLink BarItemName="completed"/>
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarSubItemLink BarItemName="priority"/>
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarEditItemLink BarItemName="tags"/>
+                            </dxb:PopupMenu>
+                        </dxb:BarManager.DXContextMenu>
+                    </StackPanel>
+                </DataTemplate>
+            </dxe:ListBoxEdit.ItemTemplate>
+        </dxe:ListBoxEdit>
+    </Grid>
+</Window>
