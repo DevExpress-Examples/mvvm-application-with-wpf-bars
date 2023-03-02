@@ -1,7 +1,6 @@
 Imports DevExpress.Mvvm
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
-Imports System.ComponentModel
 
 Namespace Bars_in_MVVM_Application
 
@@ -22,7 +21,6 @@ Namespace Bars_in_MVVM_Application
     Public Class Issue
         Inherits BindableBase
 
-        <[ReadOnly](True)>
         Public Property Id As Integer
             Get
                 Return GetValue(Of Integer)()
