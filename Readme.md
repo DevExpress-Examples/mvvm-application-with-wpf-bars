@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # MVVM application with WPF Bars
 
-This example demonstrates how to use [WPF Bars](https://docs.devexpress.com/WPF/6194/controls-and-libraries/ribbon-bars-and-menu/bars) in an MVVM application. Bars are bound to execute commands that allow you to add and remove items from the data source and edit item properties:
+This example demonstrates how to use [WPF Bars](https://docs.devexpress.com/WPF/6194/controls-and-libraries/ribbon-bars-and-menu/bars) in an MVVM application. Bars are bound to commands that allow you to add and remove items from the data source and edit item properties:
 
 ![image](https://user-images.githubusercontent.com/65009440/222427680-3b751290-7d8d-437a-8edd-0c4fa9f79831.png)
 
@@ -36,7 +36,9 @@ public void AddIssue() {
 
 The `Issues` property is the content control's `ItemsSource`.
 
-You can also use the [DialogService](https://docs.devexpress.com/WPF/17467/mvvm-framework/services/predefined-set/dialog-services/dialogservice) to invoke a dialog when a user clicks the **Add** button. For example, to allow users to specify the created item properties.
+> **Note**
+>
+> You can also use the [DialogService](https://docs.devexpress.com/WPF/17467/mvvm-framework/services/predefined-set/dialog-services/dialogservice) to invoke a dialog when a user clicks the **Add** button. For example, to allow users to specify the created item properties.
 
 ### Remove Button
 
@@ -51,7 +53,7 @@ The **Remove** button is the [BarButtonItem](https://docs.devexpress.com/WPF/Dev
                    .../>
 ```
 
-```
+```cs
 [Command]
 public void RemoveIssue() {
     Issues.Remove(SelectedIssue);
