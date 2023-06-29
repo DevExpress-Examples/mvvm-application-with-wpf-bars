@@ -171,3 +171,7 @@ Each item contains the context menu that duplicates the listed actions. To creat
 * [DevExpress MVVM Framework](https://docs.devexpress.com/WPF/15112/mvvm-framework)
 * [List of Bar Items and Links](https://docs.devexpress.com/WPF/6646/controls-and-libraries/ribbon-bars-and-menu/common-concepts/the-list-of-bar-items-and-links)
 * [Menus](https://docs.devexpress.com/WPF/115388/controls-and-libraries/ribbon-bars-and-menu/menus)
+
+## More Examples
+
+* [Generate Bar Items from a View Model Collection in an MVVM Application](https://github.com/DevExpress-Examples/wpf-bars-mvvm-generate-bars-from-view-model-collection)
