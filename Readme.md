@@ -6,14 +6,25 @@
 <!-- default badges end -->
 # Simple MVVM application with DXBars - Tutorial
 
+This tutorial demonstrates how to implement a simple and flexible data management system by using the MVVM pattern for WPF platform.
 
-<p>This tutorial demonstrates how to implement a simple and flexible data management system by using the MVVM pattern for WPF platform.</p>
-<p><strong>Task<br /> </strong>Implement a flexible data management system by using the MVVM pattern for WPF platform.</p>
-<p><strong>Input Data<br /> </strong>A list of Person objects providing custom information (first name, last name, photo and email).</p>
-<p><strong>Additional Requirements</strong><br /> The management system should provide an ability to modify information on persons and add/delete persons. The system should prevent accidental modification of persons' data via visual controls.</p>
-<p><strong>Step 1. Creating Data Model.<br /> </strong>First, we create a simple data model:</p>
-<p>1. The Person class with a set of relevant fields:</p>
+## Task
 
+Implement a flexible data management system by using the MVVM pattern for WPF platform.
+
+## Input Data
+
+A list of Person objects providing custom information (first name, last name, photo and email).
+
+## Additional Requirements
+
+The management system should provide an ability to modify information on persons and add/delete persons. The system should prevent accidental modification of persons' data via visual controls.
+
+## Step 1. Create a Data Model
+
+Create a simple data model:
+
+1. The Person class with a set of relevant fields:
 
 ```cs
 public class Person { 
@@ -25,15 +36,13 @@ public class Person {
 
 ```
 
-<p>2. The Persons entity that is a collection of Person objects:</p>
-
+2. The Persons entity that is a collection of Person objects:
 
 ```cs
 public class Persons : ObservableCollection<Person> {  }
 ```
 
-
-<p>3. Utility classes that help creating Person objects:</p>
+3. Utility classes that help creating Person objects:
 
 
 ```cs
@@ -58,10 +67,11 @@ public static class PersonsCreator {
 }
 ```
 
+## Step 2. Create a Form for Person Entity
 
-<p><strong>Step 2. Creating Form for Person Entity.</strong><br /> In this step we create a view model for the Person entity by using the MVVM pattern - the PersonViewModel class. This class implements the interaction between the data model and UI.</p>
-<p>1. Create a base view-model class implementing the INotifyPropertyChanged interface</p>
+In this step we create a view model for the Person entity by using the MVVM pattern - the PersonViewModel class. This class implements the interaction between the data model and UI.
 
+1. Create a base view-model class implementing the `INotifyPropertyChanged` interface:
 
 ```cs
 public class ViewModelBase : INotifyPropertyChanged { 
@@ -72,7 +82,7 @@ public class ViewModelBase : INotifyPropertyChanged {
  } 
 }
 ```
-<p>2. Create the PersonViewModel class by inheriting from ViewModelBase. The class declares properties which are in-sync with Person object's properties.</p>
+2. Create the `PersonViewModel` class by inheriting from `ViewModelBase`. The class declares properties which are in-sync with `Person` object's properties:
 
 ```cs
 public class PersonViewModel : ViewModelBase { 
@@ -94,8 +104,7 @@ public class PersonViewModel : ViewModelBase {
 }
 ```
 
-<p>The PersonViewModel class also contains a non-model related property (IsReadOnly). This property prevents objects from being modified by an end-user.</p>
-
+The `PersonViewModel` class also contains a non-model related property (`IsReadOnly`). This property prevents objects from being modified by an end-user:
 
 ```cs
 public class PersonViewModel : ViewModelBase {
@@ -113,7 +122,7 @@ public class PersonViewModel : ViewModelBase {
 }
 ```
 
-<p>3. Create a view form containing controls used to display and edit data.</p>
+3. Create a view form containing controls used to display and edit data.
 
 ```xml
 <UserControl ...>
@@ -143,8 +152,7 @@ public class PersonViewModel : ViewModelBase {
 </UserControl>
 ```
 
-<p>4. A helper PersonViewModelCreator class creates a PersonViewModel and populates it with data:</p>
-
+4. A helper `PersonViewModelCreator` class creates a `PersonViewModel` and populates it with data:
 
 ```cs
 public static class PersonViewModelCreator {
@@ -159,7 +167,7 @@ public static class PersonViewModelCreator {
 }
 ```
 
-<p>Initialize the UserControl.DataContext property with the view-model provided by PersonViewModelCreator :</p>
+Initialize the `UserControl.DataContext` property with the view-model provided by `PersonViewModelCreator`:
 
 ```xml
 <UserControl x:Class="DXBarsAndMVVM.Views.PersonView"
@@ -179,7 +187,7 @@ public static class PersonViewModelCreator {
 </UserControl>
 ```
 
-<p>5. Add an additional visual control element (BarCheckItem) to the view form that will be bound to the PersonViewModel.IsReadOnly property</p>
+5. Add an additional visual control element (`BarCheckItem`) to the view form that will be bound to the `PersonViewModel.IsReadOnly` property:
 
 ```xml
 <UserControl ...>
@@ -201,7 +209,7 @@ public static class PersonViewModelCreator {
 </UserControl>
 ```
 
-<p>6. To test the project, add the following code to the main window</p>
+6. To test the project, add the following code to the main window:
 
 ```xml
 <Window x:Class="DXBarsAndMVVM.MainWindow"
@@ -216,8 +224,9 @@ public static class PersonViewModelCreator {
 </Window>
 ```
 
-<p><strong>Step 3. Creating Form for Persons Entity.</strong></p>
-<p>1. Create a PersonsViewModel object that is a collection of PersonViewModel objects. The PersonsViewModel class is inherited from the LockableCollection<PersonViewMode> class defined in the DevExpress.Xpf.Core library. This class allows you to temporarily lock change notifications by using the BeginUpdate and EndUpdate methods. The BeginUpdate method suppresses the CollectionChanged event until the EndUpdate method is called. Once the EndUpdate method is called, the CollectionChanged event is raised.</p>
+## Step 3. Create a Form for Persons Entity
+
+1. Create a PersonsViewModel object that is a collection of PersonViewModel objects. The PersonsViewModel class is inherited from the LockableCollection<PersonViewMode> class defined in the DevExpress.Xpf.Core library. This class allows you to temporarily lock change notifications by using the BeginUpdate and EndUpdate methods. The BeginUpdate method suppresses the CollectionChanged event until the EndUpdate method is called. Once the EndUpdate method is called, the CollectionChanged event is raised.
 
 
 ```cs
@@ -229,7 +238,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 }
 ```
 
-<p>2. When the Persons model collection is changed, it should be synchronized with the PersonsViewModel.</p>
+2. When the Persons model collection is changed, it should be synchronized with the PersonsViewModel:
 
 ```cs
 public class PersonsViewModel : LockableCollection<PersonViewModel> {
@@ -255,7 +264,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 
 ```
 
-<p>3. To allow a user to select a model, new Selected and SelectedIndex properties are introduced. In addition, an indexer property is added that allows you to get PersonViewModel objects by Person objects.</p>
+3. To allow a user to select a model, new Selected and SelectedIndex properties are introduced. In addition, an indexer property is added that allows you to get PersonViewModel objects by Person objects.
 
 ```cs
 public class PersonsViewModel : LockableCollection<PersonViewModel> {
@@ -298,7 +307,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 }
 ```
 
-<p>4. Now we create a view containing a ListBox control.</p>
+4. Now we create a view containing a ListBox control.
 
 ```xml
 <ListBox x:Name="list" ItemsSource="{Binding}" SelectedIndex="{Binding SelectedIndex}">
@@ -313,8 +322,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 </ListBox>
 ```
 
-<p>5. A helper PersonsViewModelCreator class creates a PersonsViewModel and populates it with data:</p>
-
+5. A helper PersonsViewModelCreator class creates a PersonsViewModel and populates it with data:
 
 ```cs
 public class PersonsViewModel : LockableCollection<PersonViewModel> {
@@ -362,7 +370,7 @@ public static class PersonsViewModelCreator {
 
 ```
 
-<p>The following code sets a DataContext for a view.</p>
+The following code sets a `DataContext` for a view:
 
 ```xml
 <UserControl x:Class="DXBarsAndMVVM.Views.PersonsView"
@@ -382,7 +390,7 @@ public static class PersonsViewModelCreator {
 </UserControl>
 ```
 
-<p>6. Create a command class that implements the ICommand interface</p>
+6. Create a command class that implements the ICommand interface:
 
 ```cs
 public class PersonsCommand : ICommand {
@@ -424,7 +432,7 @@ public class PersonsCommand : ICommand {
 }
 ```
 
-<p>Create commands that are used to work with the Person collection:</p>
+Create commands that are used to work with the Person collection:
 
 ```cs
 public class PersonsViewModel : LockableCollection<PersonViewModel> {
@@ -464,7 +472,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 }
 ```
 
-<p>7. Add visual elements (BarButtonItems) to the form and bind them to corresponding commands.</p>
+7. Add visual elements (BarButtonItems) to the form and bind them to corresponding commands:
 
 ```xml
 <dxb:BarManager>
@@ -484,8 +492,9 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 </dxb:BarManager>
 ```
 
-<p><strong>Step 4. Building GUI</strong></p>
-<p>1. Add DXTabControl with two tabs to the main window. The first tab will allow a end-user to select a record (a Person object) while the second tab will be used to edit selected record's properties:</p>
+## Step 4. Build GUI
+
+1. Add `DXTabControl` with two tabs to the main window. The first tab will allow a end-user to select a record (a Person object) while the second tab will be used to edit selected record's properties:
 
 ```xml
 <Window x:Class="DXBarsAndMVVM.MainWindow"
@@ -530,7 +539,9 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 </Window>
 ```
 
-<p>2. Tabs contain PersonsView and PersonView objects. Each view defines its own BarManager with a Bar. So, when switching between tabs, you will see a bar within a tab page. It is handy to have a single bar at the top of the main form instead. This can be implemented by using DXBars merging features.<br /> To accomplish this, add BarManager with a bar at the top of the main window.</p>
+2. Tabs contain PersonsView and PersonView objects. Each view defines its own BarManager with a Bar. So, when switching between tabs, you will see a bar within a tab page. It is handy to have a single bar at the top of the main form instead. This can be implemented by using DXBars merging features.
+
+To accomplish this, add BarManager with a bar at the top of the main window:
 
 ```xml
 <dxb:BarManager>
@@ -541,7 +552,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 </dxb:BarManager>
 ```
 
-<p>Here is the complete code of the main window:</p>
+Here is the complete code of the main window:
 
 ```xml
 <Window x:Class="DXBarsAndMVVM.MainWindow"
@@ -591,7 +602,7 @@ public class PersonsViewModel : LockableCollection<PersonViewModel> {
 </Window>
 ```
 
-<p>The code-behind class:</p>
+The code-behind class:
 
 ```cs
 public partial class MainWindow : Window {
@@ -614,7 +625,10 @@ public partial class MainWindow : Window {
 }
 ```
 
-<p><strong>Conclusion<br /> </strong>MVVM provides a flexible way to write complex GUI systems. This tutorial helps you understand the basic principles of writing applications by using the MVVM pattern. The use of the DXBars component will help you add an efficient navigation UI to your applications.</p>
+## Summary
+
+MVVM provides a flexible way to write complex GUI systems. This tutorial helps you understand the basic principles of writing applications by using the MVVM pattern. The use of the DXBars component will help you add an efficient navigation UI to your applications.
+
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
