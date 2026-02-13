@@ -630,7 +630,7 @@ public partial class MainWindow : Window {
 MVVM provides a flexible way to write complex GUI systems. This tutorial helps you understand the basic principles of writing applications by using the MVVM pattern. The use of the DXBars component will help you add an efficient navigation UI to your applications.
 
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=mvvm-application-with-wpf-bars&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=mvvm-application-with-wpf-bars&~~~was_helpful=no)
 
